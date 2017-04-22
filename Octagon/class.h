@@ -273,3 +273,67 @@ int ClassOctagon::display ()
 
 	return 0;
 }
+
+class tempc
+    : public EmptyClass
+    , public Any
+{
+    //FRIENDS
+    friend class Ctrl;
+    friend void Vector<int>::Clear();
+ 
+public:
+    /*
+    * all handling data structures and typedefs nesseccary for the usage of public classes API go here
+    */
+ 
+    typedef unsigned HANDLE;
+    typedef tempc CLASSNAME;
+ 
+    struct SubStruct
+    {}
+    
+    static const int AnIntConstant = 123;
+    //static const float constf = 1.2f; //NOT POSSIBLE, arch dependant.
+ 
+    //CTORS, DTORS, all concerning this class generation
+    //INTERFACE, defines how to operate it
+ 
+    //explicit
+    tempc(int a = 0);
+    virtual ~tempc() {}
+ 
+    void AReadOnlyMethod() const { /*do something, bot dont change things in class*/ }
+    void AWritableMethod() { /*here you can change your class state*/ }
+ 
+    /*
+    * Here follows the public available data, typically its place for a not close related members
+    */
+    
+protected:
+    /*
+    * all handling data structures and typedefs interesting for the deriving classes go here
+    */
+ 
+    /*
+    * Here follows the interface, deriving classes might be interested in, accessing it directly.
+    */
+    
+    /*
+    * Here follows the data, which mostly for performance reasons should be made available to derived classes
+    */
+    
+private:
+    /*
+    * all handling data structures and typedefs which we use only internally, go here
+    */
+ 
+    /*
+    * Here follows the private interface, which mostly are own helper classes and functions
+    */
+ 
+    /*
+    * Here follows the private data, which only the class itself takes care of and none should ever know about.
+    * in case of wrapper class this is mostly the objects that are wrapped
+    */
+};
